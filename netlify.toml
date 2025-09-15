@@ -9,6 +9,9 @@
 [dev]
   functions = "netlify/functions"
 
+[edge_functions]
+  directory = "netlify/edge-functions"
+
 [[redirects]]
   from = "/healthz"
   to = "/.netlify/functions/health-check"
