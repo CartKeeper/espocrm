@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EspoCRM – Netlify Deployment Notice</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+        background: #0b5fff0d;
+        color: #1f2933;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+      main {
+        max-width: 42rem;
+        background: #ffffffdd;
+        border-radius: 16px;
+        padding: 2.5rem 2.25rem;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      }
+      h1 {
+        font-size: clamp(1.85rem, 3vw, 2.4rem);
+        margin-top: 0;
+        color: #0b5fff;
+      }
+      p {
+        margin: 0 0 1rem 0;
+      }
+      .actions {
+        margin-top: 2rem;
+      }
+      .actions a {
+        display: inline-block;
+        background: #0b5fff;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .actions a:hover,
+      .actions a:focus {
+        background: #094acc;
+      }
+      code {
+        font-size: 0.95em;
+        background: rgba(15, 23, 42, 0.08);
+        padding: 0.125em 0.35em;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>EspoCRM needs a PHP runtime</h1>
+      <p>
+        You are viewing a Netlify deploy of the <strong>EspoCRM</strong> repository. Netlify hosts static
+        assets and serverless JavaScript functions, but the CRM application relies on PHP 8.2–8.4 and a database
+        such as MySQL, MariaDB, or PostgreSQL. Because Netlify cannot execute PHP code, the full application cannot run here.
+      </p>
+      <p>
+        This compatibility page is published to clarify the limitation and prevent confusing <code>404</code> responses.
+        The complete deployment instructions for supported environments are described in our documentation.
+      </p>
+      <div class="actions">
+        <a href="https://github.com/espocrm/espocrm/blob/master/docs/deployment/netlify.md">
+          Read the Netlify deployment guide
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

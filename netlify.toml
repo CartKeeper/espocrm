@@ -1,0 +1,22 @@
+[build]
+  publish = "public"
+  command = "echo 'EspoCRM requires PHP. Deploying a compatibility notice for Netlify.'"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/netlify-not-supported.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "same-origin"
+
+[[edge_functions]]
+  function = "netlify-notice"
+  path = "/netlify-not-supported.html"
