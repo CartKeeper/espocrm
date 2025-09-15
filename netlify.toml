@@ -4,13 +4,19 @@
 
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [edge_functions]
   directory = "netlify/edge-functions"
 
-[[edge_functions]]
-  function = "security-headers"
-  path = "/*"
+[dev]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/healthz"
+  to = "/.netlify/functions/health-check"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/api/status"
@@ -26,7 +32,21 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[edge_functions]]
+  function = "security-headers"
+  path = "/*"
+
+[[edge_functions]]
+  function = "edge-health"
+  path = "/edge-health"

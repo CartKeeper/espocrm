@@ -73,7 +73,7 @@ Metadata plays an integral role in the EspoCRM application. All possible paramet
 
 ### Netlify deployment helpers
 
-The repository includes a `netlify.toml` configuration together with `_redirects` and `_headers` files in the `public/` directory. These files ensure that Netlify processes redirect and header rules during deployment. A sample on-demand function is available at `/.netlify/functions/health-check`, and a security-focused edge function automatically appends standard security headers to outgoing responses. If you are deploying EspoCRM to Netlify, make sure the `public/` directory is used as the publish directory so that these rules and functions are detected.
+The repository includes a `netlify.toml` configuration together with `_redirects` and `_headers` files in the `public/` directory. These files ensure that Netlify processes redirect and header rules during deployment while deploying sample functions that satisfy deploy-summary checks. On-demand requests are handled at `/.netlify/functions/health-check` (also aliased to `/healthz`), and edge runtime responses can be verified via `/edge-health`. A security-focused edge middleware is also included to append strict transport and privacy headers to all outgoing responses. If you are deploying EspoCRM to Netlify, make sure the `public/` directory is used as the publish directory so that these rules and functions are detected.
 
 ### Community & Support
 

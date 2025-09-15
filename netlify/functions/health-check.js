@@ -1,16 +1,17 @@
-exports.handler = async () => {
+exports.handler = async function handler(event) {
   const timestamp = new Date().toISOString();
-  const payload = {
-    status: 'ok',
-    application: 'EspoCRM',
-    checkedAt: timestamp
-  };
 
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache, no-store, must-revalidate'
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify({
+      status: 'ok',
+      application: 'EspoCRM',
+      timestamp,
+      path: event.path
+    })
   };
 };
