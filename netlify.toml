@@ -1,6 +1,7 @@
 [build]
   publish = "public"
   command = "npm run build"
+  edge_functions = "netlify/edge-functions"
 
 [functions]
   directory = "netlify/functions"
@@ -21,15 +22,15 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    X-Frame-Options = "DENY"
+    "Strict-Transport-Security" = "max-age=63072000; includeSubDomains; preload"
+    "X-Content-Type-Options" = "nosniff"
+    "Referrer-Policy" = "strict-origin-when-cross-origin"
+    "X-Frame-Options" = "DENY"
 
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    "Cache-Control" = "public, max-age=31536000, immutable"
 
 [[edge_functions]]
   path = "/edge-health"
