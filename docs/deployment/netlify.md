@@ -5,6 +5,13 @@ When you deploy the repository to Netlify the build succeeds, but every request 
 there is no generated `index.html` or PHP runtime available, Netlify falls back to its default 404 page and you see
 `Page not found` for every path.
 
+## Understanding the Netlify deploy summary
+
+The Netlify deploy summary reflects this mismatch. Items such as **“No redirect rules processed”**, **“No header rules
+processed”**, **“No functions deployed”**, and **“No edge functions deployed”** are informational in this case. EspoCRM
+does not provide static `_redirects` or `_headers` files, nor does it ship Netlify-compatible functions. Adding empty
+rules will not make the application work on Netlify because the fundamental PHP runtime requirement is still missing.
+
 ## Recommended approaches
 
 * Deploy EspoCRM to infrastructure that provides a PHP 8.2–8.4 runtime together with a supported database such as
