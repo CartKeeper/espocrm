@@ -162,6 +162,7 @@ module.exports = grunt => {
                 'client/lib/*',
                 'client/modules/crm/lib/*',
                 'client/css/espo/*',
+                'dist',
             ],
             final: ['build/tmp'],
             release: ['build/EspoCRM-' + pkg.version],
@@ -259,6 +260,13 @@ module.exports = grunt => {
                 src: '**',
                 cwd: 'build/tmp',
                 dest: 'build/EspoCRM-<%= pkg.version %>/',
+            },
+            dist: {
+                expand: true,
+                dot: true,
+                src: '**',
+                cwd: 'build/EspoCRM-<%= pkg.version %>/',
+                dest: 'dist/',
             },
         },
 
@@ -544,6 +552,7 @@ module.exports = grunt => {
         'copy:final',
         'chmod-folders',
         'chmod-multiple',
+        'copy:dist',
         'clean:final',
     ];
 
