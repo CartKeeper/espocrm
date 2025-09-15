@@ -164,6 +164,7 @@ module.exports = grunt => {
                 'client/css/espo/*',
                 'dist',
             ],
+            dist: ['dist'],
             final: ['build/tmp'],
             release: ['build/EspoCRM-' + pkg.version],
             beforeFinal: {src: cleanupBeforeFinal},
@@ -543,6 +544,7 @@ module.exports = grunt => {
 
     const offline = [
         'clean:start',
+        'clean:dist',
         'mkdir:tmp',
         'internal',
         'copy:frontend',
