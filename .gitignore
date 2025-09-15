@@ -9,6 +9,7 @@
 /data/config-internal-override.php
 /data/tmp/*
 /build
+/dist
 /node_modules
 /npm-debug.log
 /test.php
