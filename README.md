@@ -71,6 +71,10 @@ We highly recommend using an IDE for development. The backend codebase follows S
 
 Metadata plays an integral role in the EspoCRM application. All possible parameters are described with a JSON Schema, meaning you will have autocompletion in the IDE. You can also find the full metadata reference in the documentation.
 
+### Netlify deployment helpers
+
+The repository includes a `netlify.toml` configuration together with `_redirects` and `_headers` files in the `public/` directory. These files ensure that Netlify processes redirect and header rules during deployment. A sample on-demand function is available at `/.netlify/functions/health-check`, and a security-focused edge function automatically appends standard security headers to outgoing responses. If you are deploying EspoCRM to Netlify, make sure the `public/` directory is used as the publish directory so that these rules and functions are detected.
+
 ### Community & Support
 
 If you have a question regarding some features, need help or customizations, want to get in touch with other EspoCRM users, or add a feature request, please use our [community forum](https://forum.espocrm.com/). We believe that using the forum to ask for help and share experience allows everyone in the community to contribute and use this knowledge later.

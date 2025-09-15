@@ -1,0 +1,2 @@
+/api/status /.netlify/functions/health-check 200!
+/* /index.php 200

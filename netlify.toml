@@ -1,0 +1,32 @@
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"
+
+[edge_functions]
+  directory = "netlify/edge-functions"
+
+[[edge_functions]]
+  function = "security-headers"
+  path = "/*"
+
+[[redirects]]
+  from = "/api/status"
+  to = "/.netlify/functions/health-check"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.php"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
