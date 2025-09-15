@@ -8,7 +8,7 @@
   },
   "scripts": {
     "postinstall": "node js/scripts/postinstall-cleanup && node js/scripts/prepare-lib-original.js",
-    "build": "grunt",
+    "build": "npx grunt && node js/scripts/create-dist.js",
     "build-dev": "grunt dev",
     "build-test": "grunt test",
     "build-frontend": "grunt internal",
