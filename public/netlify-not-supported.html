@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EspoCRM is not supported on Netlify</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f7fb;
+        color: #1f2933;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      main {
+        max-width: 640px;
+        padding: 3rem 2rem;
+        background: white;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+        border-radius: 16px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin: 0 0 1rem;
+      }
+
+      p {
+        line-height: 1.6;
+        margin: 1rem 0;
+      }
+
+      a {
+        color: #1463ff;
+      }
+
+      ul {
+        margin: 1rem 0 0;
+        padding-left: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>EspoCRM needs a PHP runtime</h1>
+      <p>
+        This deploy preview is hosted on Netlify, which is optimized for static sites and serverless JavaScript functions.
+        EspoCRM is a PHP application that also requires a supported database such as MySQL, MariaDB, or PostgreSQL. Because
+        Netlify does not provide that runtime, the application cannot run here.
+      </p>
+      <p>
+        You can review the
+        <a href="https://github.com/espocrm/espocrm/blob/master/docs/deployment/netlify.md">Netlify deployment notes</a>
+        for guidance on hosting EspoCRM with compatible infrastructure.
+      </p>
+      <p>Supported options include:</p>
+      <ul>
+        <li>Using a VPS or hosting provider that offers PHP 8.2&ndash;8.4 together with a database.</li>
+        <li>Deploying Docker images or other scripted installations described in the EspoCRM documentation.</li>
+        <li>Running EspoCRM locally for evaluation before promoting it to production hosting.</li>
+      </ul>
+      <p>
+        The static assets in this preview only show this notice so visitors are not presented with a confusing 404 page.
+      </p>
+    </main>
+  </body>
+</html>

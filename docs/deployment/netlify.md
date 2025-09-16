@@ -5,6 +5,21 @@ When you deploy the repository to Netlify the build succeeds, but every request 
 there is no generated `index.html` or PHP runtime available, Netlify falls back to its default 404 page and you see
 `Page not found` for every path.
 
+## Netlify compatibility layer
+
+Starting from this repository version we ship a small Netlify compatibility layer that makes the limitation explicit:
+
+* `netlify.toml` adds a catch-all redirect to `/netlify-not-supported.html`, applies security headers, and exposes a
+  simple serverless function that reports the unsupported status.
+* `netlify/functions/status.js` responds with JSON so the deploy summary shows a function being provisioned.
+* `netlify/edge-functions/netlify-notice.js` decorates the compatibility page with an `X-EspoCRM-Netlify` header to
+  demonstrate an edge function invocation.
+* `public/netlify-not-supported.html` is the static page Netlify serves instead of a confusing 404. It links back to
+  this documentation for the recommended hosting options.
+
+These files do not make EspoCRM runnable on Netlify—they only explain the limitation to people opening the deploy
+preview. The application still needs to be hosted on infrastructure that provides PHP and a supported database.
+
 ## Understanding the Netlify deploy summary
 
 The Netlify deploy summary reflects this mismatch. Items such as **“No redirect rules processed”**, **“No header rules
