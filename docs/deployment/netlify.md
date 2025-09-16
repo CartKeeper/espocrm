@@ -26,7 +26,7 @@ notice and a link back to the supported installation paths.
 * Deploy EspoCRM to infrastructure that provides a PHP 8.2–8.4 runtime together with a supported database such as
   MySQL, MariaDB, or PostgreSQL. You can follow the standard installation options that use those requirements,
   including manual, scripted, or Docker-based setups described in the main README.
-* If you need a managed hosting solution, choose a provider that offers PHP and database support. Netlify cannot serve the application because it does not execute PHP code.
+* If you need a managed hosting solution, choose a provider that offers PHP and database support. Netlify cannot serve the application because it does not execute PHP code, so select a host that provides the required runtime out of the box.
 * For local evaluation, use the documented installation workflows to provision a compatible environment before migrating
   to production hosting.
 
