@@ -7,18 +7,26 @@ EspoCRM's interface.
 
 ## Understanding the Netlify deploy summary
 
-The Netlify deploy summary reflects this mismatch. Items such as **“No redirect rules processed”**, **“No header rules
-processed”**, **“No functions deployed”**, and **“No edge functions deployed”** are informational in this case. EspoCRM
-does not provide static `_redirects` or `_headers` files, nor does it ship Netlify-compatible functions. Adding empty
-rules will not make the application work on Netlify because the fundamental PHP runtime requirement is still missing.
+Deploy previews now ship with a lightweight compatibility layer so the limitation is obvious to anyone opening the
+link:
+
+* `netlify.toml` redirects every request to `/netlify-not-supported.html` and applies the standard security headers.
+* `public/netlify-not-supported.html` explains why the preview cannot run EspoCRM and points to this documentation for
+  the recommended hosting targets.
+* `netlify/functions/status.js` responds with JSON indicating that EspoCRM needs PHP and a database. The deploy summary
+  reports the function as provisioned, demonstrating serverless support without attempting to run the application.
+* `netlify/edge-functions/netlify-notice.js` adds an `X-EspoCRM-Netlify` response header and controls caching for the
+  notice page so the edge function invocation is visible in the summary.
+
+The compatibility layer does not make EspoCRM runnable on Netlify—it simply replaces the 404 page with an explicit
+notice and a link back to the supported installation paths.
 
 ## Recommended approaches
 
 * Deploy EspoCRM to infrastructure that provides a PHP 8.2–8.4 runtime together with a supported database such as
   MySQL, MariaDB, or PostgreSQL. You can follow the standard installation options that use those requirements,
   including manual, scripted, or Docker-based setups described in the main README.
-* If you need a managed hosting solution, choose a provider that offers PHP and database support. Netlify cannot serve the
-  application because it does not execute PHP code.
+* If you need a managed hosting solution, choose a provider that offers PHP and database support. Netlify cannot serve the application because it does not execute PHP code.
 * For local evaluation, use the documented installation workflows to provision a compatible environment before migrating
   to production hosting.
 

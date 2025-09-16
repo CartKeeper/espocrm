@@ -1,7 +1,6 @@
 [build]
   publish = "public"
   command = "echo 'EspoCRM deploy preview (Netlify not supported)'"
-  edge_functions = "netlify/edge-functions"
 
 [functions]
   directory = "netlify/functions"
@@ -29,11 +28,6 @@
     "Referrer-Policy" = "strict-origin-when-cross-origin"
     "X-Frame-Options" = "DENY"
     "Permissions-Policy" = "camera=(), geolocation=(), microphone=()"
-
-[[headers]]
-  for = "/netlify-not-supported.html"
-  [headers.values]
-    "Cache-Control" = "no-store"
 
 [[edge_functions]]
   path = "/netlify-not-supported.html"
