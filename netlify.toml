@@ -39,7 +39,7 @@
 [[headers]]
   for = "/netlify-not-supported.html"
   [headers.values]
-    "Cache-Control" = "no-store"
+    "Cache-Control" = "no-cache, no-store, must-revalidate"
 
 [[edge_functions]]
   path = "/netlify-not-supported.html"
