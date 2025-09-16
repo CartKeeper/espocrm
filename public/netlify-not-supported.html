@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EspoCRM is not supported on Netlify</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+        background: #0d1117;
+        color: #e6edf3;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      main {
+        max-width: 42rem;
+        background: rgba(13, 17, 23, 0.85);
+        border: 1px solid rgba(110, 118, 129, 0.4);
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 16px 48px rgba(1, 4, 9, 0.4);
+      }
+      h1 {
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        margin-top: 0;
+      }
+      p {
+        margin: 1rem 0;
+      }
+      a {
+        color: #7ee787;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+      code {
+        font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        background: rgba(110, 118, 129, 0.2);
+        padding: 0.15rem 0.35rem;
+        border-radius: 0.35rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>EspoCRM requires a PHP runtime</h1>
+      <p>
+        You are viewing a Netlify deploy preview of the EspoCRM repository. Netlify is a static hosting platform, so it
+        cannot execute the PHP code or connect to the database layer that EspoCRM depends on.
+      </p>
+      <p>
+        Deploy this application to infrastructure that provides PHP 8.2–8.4 together with MySQL, MariaDB, or PostgreSQL.
+        The
+        <a href="https://github.com/espocrm/espocrm/blob/master/docs/deployment/netlify.md">Netlify deployment guide</a>
+        explains the limitation and outlines the
+        supported hosting options.
+      </p>
+      <p>
+        If you reached this preview expecting a working demo, please use one of the deployment methods in the
+        <a href="https://github.com/espocrm/espocrm#installation">installation documentation</a> instead.
+      </p>
+    </main>
+  </body>
+</html>
