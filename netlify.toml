@@ -1,5 +1,7 @@
 [build]
   publish = "public"
+  command = "npm run build"
+  edge_functions = "netlify/edge-functions"
 
 [functions]
   directory = "netlify/functions"
@@ -26,15 +28,17 @@
 
 [[headers]]
   for = "/*"
-  values."Strict-Transport-Security" = "max-age=63072000; includeSubDomains; preload"
-  values."X-Content-Type-Options" = "nosniff"
-  values."Referrer-Policy" = "strict-origin-when-cross-origin"
-  values."X-Frame-Options" = "DENY"
-  values."Permissions-Policy" = "camera=(), geolocation=(), microphone=()"
+  [headers.values]
+    "Strict-Transport-Security" = "max-age=63072000; includeSubDomains; preload"
+    "X-Content-Type-Options" = "nosniff"
+    "Referrer-Policy" = "strict-origin-when-cross-origin"
+    "X-Frame-Options" = "DENY"
+    "Permissions-Policy" = "camera=(), geolocation=(), microphone=()"
 
 [[headers]]
   for = "/netlify-not-supported.html"
-  values."Cache-Control" = "no-store"
+  [headers.values]
+    "Cache-Control" = "no-store"
 
 [[edge_functions]]
   path = "/netlify-not-supported.html"
