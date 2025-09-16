@@ -1,7 +1,5 @@
 [build]
   publish = "public"
-  command = "npm run build"
-  edge_functions = "netlify/edge-functions"
 
 [functions]
   directory = "netlify/functions"
@@ -10,28 +8,34 @@
 [dev]
   functions = "netlify/functions"
 
-[edge_functions]
-  directory = "netlify/edge-functions"
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[redirects]]
-  from = "/healthz"
-  to = "/.netlify/functions/health-check"
+  from = "/netlify-status"
+  to = "/.netlify/functions/status"
   status = 200
   force = true
 
+[[redirects]]
+  from = "/*"
+  to = "/netlify-not-supported.html"
+  status = 200
+
 [[headers]]
   for = "/*"
-  [headers.values]
-    "Strict-Transport-Security" = "max-age=63072000; includeSubDomains; preload"
-    "X-Content-Type-Options" = "nosniff"
-    "Referrer-Policy" = "strict-origin-when-cross-origin"
-    "X-Frame-Options" = "DENY"
+  values."Strict-Transport-Security" = "max-age=63072000; includeSubDomains; preload"
+  values."X-Content-Type-Options" = "nosniff"
+  values."Referrer-Policy" = "strict-origin-when-cross-origin"
+  values."X-Frame-Options" = "DENY"
+  values."Permissions-Policy" = "camera=(), geolocation=(), microphone=()"
 
 [[headers]]
-  for = "/assets/*"
-  [headers.values]
-    "Cache-Control" = "public, max-age=31536000, immutable"
+  for = "/netlify-not-supported.html"
+  values."Cache-Control" = "no-store"
 
 [[edge_functions]]
-  path = "/edge-health"
-  function = "edge-health"
+  path = "/netlify-not-supported.html"
+  function = "netlify-notice"

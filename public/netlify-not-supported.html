@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EspoCRM on Netlify</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      main {
+        max-width: 42rem;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        border-radius: 1rem;
+        padding: 2.5rem;
+        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.6);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
+        margin-bottom: 1rem;
+      }
+
+      p {
+        line-height: 1.6;
+        margin: 0 0 1rem;
+      }
+
+      a {
+        color: #38bdf8;
+      }
+
+      code {
+        background: rgba(148, 163, 184, 0.2);
+        border-radius: 0.375rem;
+        padding: 0.125rem 0.375rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>EspoCRM is not supported on Netlify</h1>
+      <p>
+        EspoCRM requires a PHP runtime together with a supported database. Netlify deployments are limited to static
+        assets and serverless functions, so the application cannot run from this preview.
+      </p>
+      <p>
+        To evaluate EspoCRM, follow one of the installation options outlined in our documentation. The
+        <a href="https://github.com/espocrm/espocrm/blob/master/docs/deployment/netlify.md">Netlify guide</a> explains
+        why this platform is incompatible and lists the recommended hosting targets.
+      </p>
+      <p>
+        You can safely close this preview and continue with an environment that offers PHP 8.2 or newer and a supported
+        database such as MySQL, MariaDB, or PostgreSQL.
+      </p>
+    </main>
+  </body>
+</html>
