@@ -2,29 +2,15 @@
 
 Netlify is designed for static sites and serverless functions, while EspoCRM requires a full PHP application server.
 When you deploy the repository to Netlify the build succeeds, but every request is served as a static asset. Because
-there is no generated `index.html` or PHP runtime available, Netlify cannot execute the application code.
-
-## Compatibility layer for deploy previews
-
-Starting from this repository version we ship a small Netlify compatibility layer that makes the limitation explicit:
-
-* `netlify.toml` adds a catch-all redirect to `/netlify-not-supported.html`, applies security headers, and exposes a
-  simple serverless function that reports the unsupported status.
-* `netlify/functions/status.js` responds with JSON so the deploy summary shows a function being provisioned.
-* `netlify/edge-functions/netlify-notice.js` decorates the compatibility page with an `X-EspoCRM-Netlify` header to
-  demonstrate an edge function invocation.
-* `public/netlify-not-supported.html` is the static page Netlify serves instead of a confusing 404. It links back to
-  this documentation for the recommended hosting options.
-
-These files do not make EspoCRM runnable on Netlify—they only explain the limitation to people opening the deploy
-preview. The application still needs to be hosted on infrastructure that provides PHP and a supported database.
+there is no generated `index.html` or PHP runtime available, the preview cannot execute the application code or render
+EspoCRM's interface.
 
 ## Understanding the Netlify deploy summary
 
-With the compatibility layer in place, the Netlify deploy summary now lists a processed redirect, security headers, a
-provisioned serverless function, and a single edge function. Those entries exist purely so the preview clearly indicates
-that Netlify is not a supported hosting option for EspoCRM. They do not change the underlying requirement for PHP and a
-persistent database.
+The Netlify deploy summary reflects this mismatch. Items such as **“No redirect rules processed”**, **“No header rules
+processed”**, **“No functions deployed”**, and **“No edge functions deployed”** are informational in this case. EspoCRM
+does not provide static `_redirects` or `_headers` files, nor does it ship Netlify-compatible functions. Adding empty
+rules will not make the application work on Netlify because the fundamental PHP runtime requirement is still missing.
 
 ## Recommended approaches
 
@@ -36,5 +22,4 @@ persistent database.
 * For local evaluation, use the documented installation workflows to provision a compatible environment before migrating
   to production hosting.
 
-Attempting to keep the deployment on Netlify will always land on the compatibility page because EspoCRM relies on
-server-side PHP code.
+Attempting to keep the deployment on Netlify will always fail because EspoCRM relies on server-side PHP code.
